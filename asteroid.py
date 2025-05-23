@@ -1,18 +1,14 @@
 import pygame
-import constants
 from circleshape import CircleShape
-
-
-
 
 
 class Asteroid(CircleShape):
     def __init__(self, x, y, radius):
         super().__init__(x, y, radius)
-    
+
+    def draw(self, screen):
+        pygame.draw.circle(screen, "white", self.position, self.radius, 2)
+
     def update(self, dt):
-        self.pos = self.pos + self.velocity * dt
+        self.position += self.velocity * dt
 
-
-    def draw(self, surface):
-        pygame.draw.circle(surface, "white", tuple(map(int, self.pos)), self.radius, 2) 
